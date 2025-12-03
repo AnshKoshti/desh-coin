@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4x7g83cpksco"]
+[gd_scene load_steps=6 format=3 uid="uid://c4x7g83cpksco"]
 
 [ext_resource type="Texture2D" uid="uid://fpnnqal18jfo" path="res://assets/grass.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://btble14p2mf1g" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://d2b6ehhmgxi31" path="res://scenes/scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bd7e2567aiv3e" path="res://scenes/coin.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dprafj28ufcsv" path="res://scenes/hud.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_sugp2")
@@ -21,3 +22,10 @@ stretch_mode = 1
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 
 [node name="GameTimer" type="Timer" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("5_tbgi4")]
+
+[connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
+[connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="start_game" from="Hud" to="." method="_on_hud_start_game"]
