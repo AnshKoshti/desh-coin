@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://q0h2xxw6pqsy"]
+
+[ext_resource type="Texture2D" uid="uid://b6k7m10hlre8k" path="res://assets/cactus.png" id="1_fy5iu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy5iu"]
+size = Vector2(29, 53)
+
+[node name="Cactus" type="Area2D" groups=["obstacles"]]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fy5iu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_fy5iu")
