@@ -77,6 +77,17 @@ func _on_player_pickup(type) -> void:
 			$Hud.update_time(time_left)
 
 
+func _on_powerup_timer_timeout() -> void:
+	var p = powerup_scene.instantiate()
+	add_child(p)
+	p.screensize = screensize
+	p.position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))
+
+
+func _on_hud_start_game() -> void:
+	new_game()
+
+
 func _on_player_hurt() -> void:
 	game_over()
 
@@ -90,14 +101,3 @@ func game_over():
 	$Hud.show_game_over()
 	$Player.die()
 	$EndSound.play()
-
-
-func _on_hud_start_game() -> void:
-	new_game()
-
-
-func _on_powerup_timer_timeout() -> void:
-	var p = powerup_scene.instantiate()
-	add_child(p)
-	p.screensize = screensize
-	p.position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))
